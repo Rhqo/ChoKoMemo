@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
       loginId: req.query.loginId
     }
   }
-  request.post(options, function(err, resaponse, body){
+  request.post(options, function(err, response, body){
     console.log(`(/req) On Callback`)
     if(err)
       throw err
