@@ -34,15 +34,36 @@ header a {
 .leftsideBar {
   height: 100vh;
   width: 15%;
-  padding: 1rem;
   background-color: gainsboro;
+}
+
+.leftsideBar li{
+  width: 100%;
+  height: 5%;
+  list-style-type:none;
+  display: flex;
+  align-items: center;
+}
+
+.leftsideBar li a {
+  align-content: center;
+  color: black;
+  padding: 0.8rem 1rem;
+  text-decoration-line: none;
 }
 
 .rightsideBar {
   height: 100vh;
   width: 85%;
-  padding: 1rem;
   background-color: white;
+}
+
+.rightsideBar h1 {
+  padding-bottom: 1rem;
+}
+
+.selected {
+  background-color: silver;
 }
 
 h1, p {
