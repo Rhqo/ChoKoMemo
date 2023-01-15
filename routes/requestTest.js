@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
       loginId: req.query.loginId
     }
   }
-  res.render('login', { option: options });
+  res.render('login', { title:"Login", showMenu:false });
   request.post(options, function(err, response, body){
     console.log(`(/req) On Callback`)
     if(err)

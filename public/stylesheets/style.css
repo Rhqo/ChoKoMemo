@@ -9,7 +9,7 @@ a {
 }
 
 header {  
-  height: 30px;
+  height: 20px;
   padding: 1rem;
   background: saddlebrown;
   display: flex;
@@ -34,12 +34,15 @@ header a {
 .leftsideBar {
   height: 100vh;
   width: 15%;
-  background-color: gray;
+  padding: 1rem;
+  background-color: gainsboro;
 }
 
 .rightsideBar {
   height: 100vh;
   width: 85%;
+  padding: 1rem;
+  background-color: white;
 }
 
 h1, p {
