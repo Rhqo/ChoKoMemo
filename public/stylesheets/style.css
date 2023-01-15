@@ -27,6 +27,21 @@ header a {
   text-decoration-line: none;
 }
 
+.content {
+  display: flex;
+}
+
+.leftsideBar {
+  height: 100vh;
+  width: 15%;
+  background-color: gray;
+}
+
+.rightsideBar {
+  height: 100vh;
+  width: 85%;
+}
+
 h1, p {
   margin: 0;
 }
