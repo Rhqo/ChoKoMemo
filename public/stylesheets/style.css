@@ -45,3 +45,34 @@ header a {
 h1, p {
   margin: 0;
 }
+
+.login-form {
+  box-sizing: border-box;
+  width: 300px;
+  border: 0;
+  border-radius: 5px;
+  background-color: saddlebrown;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+.text-field {
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  border: none;
+  background-color: wheat;
+  border-radius: 5px;
+  padding: 10px;
+  width: 100%;
+}
+
+.submit-btn {
+  box-sizing: border-box;
+  color: #EEEFF1;
+  font-size: 14px;
+  background-color: wheat;
+  margin-bottom: 30px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}
