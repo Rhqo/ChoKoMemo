@@ -1,19 +1,9 @@
-//extends layout
+extends mainLayout
 
-//block content
-//  h1= title
-//  p Welcome to #{title}
-
-doctype html
-html
-  head
-    title ChokoMemo
-  body
-    main
-      block content
-        h1= title 
-        p Welcome to #{title}
-        h2= login
-        a(href="/req" style="color:brown") LOGIN
-        h3= list
-        a(href="/list" style="color:brown") MemoList
+block content
+  h1= title 
+  p Welcome to #{title}
+  h2= login
+  a(href="/req" style="color:brown") LOGIN
+  h3= list
+  a(href="/list" style="color:brown") MemoList
