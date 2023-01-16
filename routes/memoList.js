@@ -7,11 +7,11 @@ router.get('/', function(req, res, next) {
 
   //왼쪽 리스트에 작성될 메모 타이틀 리스트
   memoList = [
-    { title: 'Memo1', memoId:1},
-    { title: 'Memo2', memoId:2},
-    { title: 'Memo3', memoId:3},
-    { title: 'Memo4', memoId:4},
-    { title: 'Memo5', memoId:5}
+    { title: 'Memo1', memoId:1 },
+    { title: 'Memo2', memoId:2 },
+    { title: 'Memo3', memoId:3 },
+    { title: 'Memo4', memoId:4 },
+    { title: 'Memo5', memoId:5 }
   ]
 
   //오른쪽 메인 콘텐츠창에 작성될 현재 메모 디테일
@@ -20,6 +20,7 @@ router.get('/', function(req, res, next) {
     title: "Memo1",
     content: "This is example"
   }
+
   res.render('Memo', { title:"Memo", showMenu:true, memoList:memoList, memoDetail:memoDetail });
 });
 
