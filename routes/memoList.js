@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
 
   //왼쪽 리스트에 작성될 메모 타이틀 리스트
   memoList = [
-    { title:'Memo1', memoId:1},
+    { title: 'Memo1', memoId:1},
     { title: 'Memo2', memoId:2},
     { title: 'Memo3', memoId:3},
     { title: 'Memo4', memoId:4},
