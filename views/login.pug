@@ -1,11 +1,13 @@
 extends topBar
 
 block content
-    form(action='http://localhost/' method='post')    
-        .login-form
-            .text-field
-                input(type='text' name='ID' placeholder='ID')
-            .text-field
-                input(type='password' name='PW' placeholder='PW')
-            .submit-btn
-                input(type='submit' name='LOGIN' value="Login")
+    form.login-form
+        .text-field
+            input#id(type='text' name='ID' placeholder='ID')
+        .text-field
+            input#password(type='password' name='PW' placeholder='PW')
+        .submit-btn
+            input(type='submit' name='LOGIN' value="Login")
+
+block javascript
+    script(src='/javascripts/login.js')
