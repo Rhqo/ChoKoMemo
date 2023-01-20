@@ -16,9 +16,9 @@ router.get('/', function(req, res, next) {
 
   //오른쪽 메인 콘텐츠창에 작성될 현재 메모 디테일
   memoDetail = {
-    memoId: 1,
-    title: "Memo1",
-    content: "This is example"
+    memoId: req.query.id,
+    title: `Memo${req.query.id}`,
+    content: `This is content of Memo${req.query.id}`
   }
 
   res.render('Memo', { title:"Memo", showMenu:true, memoList:memoList, memoDetail:memoDetail });
