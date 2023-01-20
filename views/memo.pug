@@ -10,6 +10,19 @@ block content
         else 
           li
             a(href="/memo?id="+memo.memoId)= memo.title
+      li
+        a(href="/memo?id="+memoList.push({title: `Memo${memoList.length}`, memoId: `${memoList.length}`})) +New Memo
     .rightsideBar
-      h1= memoDetail.title 
-      p= memoDetail.content
+      if memoDetail.memoId == undefined
+        h1= "Hello 'username'"
+      else if memoDetail.memoId == 6
+        form(action='http://localhost/addMemo' method='post')
+          p
+            input(type='text' name='title')
+          p
+            textarea(name='description')
+          p
+            input(type='submit')
+      else
+        h1= memoDetail.title 
+        p= memoDetail.content
