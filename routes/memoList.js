@@ -14,11 +14,33 @@ router.get('/', function(req, res, next) {
     { title: 'Memo5', memoId:5 }
   ]
 
-  //오른쪽 메인 콘텐츠창에 작성될 현재 메모 디테일
+  //todo: 구조체로 빼서 사용
   memoDetail = {
-    memoId: req.query.id,
-    title: `Memo${req.query.id}`,
-    content: `This is content of Memo${req.query.id}`
+    memoId: -1,
+    title: `no memo`,
+    content: `default`
+  }
+
+  //서버에서 받아온 값을 맵으로 정리
+  let memoMap = new Map();
+  for (idx in memoList) {
+    memo = memoList[idx]
+    newMemo = {
+      title: memo.title,
+      content: `memoID: ${memo.memoId}`
+     }
+     memoMap.set(memo.memoId, newMemo) 
+  }
+
+  //쿼리 데이터가 string이고, 맵 id는 number라서 맵 뒤질려면 int로 컨버팅!
+  numberID = parseInt(req.query.id)
+  //맵에 있는지 확인
+ if (memoMap.has(numberID)) {
+    thisMemo = memoMap.get(numberID)
+    
+    memoDetail.memoId = req.query.id
+    memoDetail.title = thisMemo.title
+    memoDetail.content = thisMemo.content
   }
 
   res.render('Memo', { title:"Memo", showMenu:true, memoList:memoList, memoDetail:memoDetail });
