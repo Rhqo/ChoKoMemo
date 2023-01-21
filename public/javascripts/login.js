@@ -4,14 +4,14 @@ form[0].addEventListener('submit', (evt)=>{
     const password = document.getElementById('password').value;
 
     fetch('http://server.chokospace.kro.kr:3901/api/chokomemo/signin', {
+        credentials: 'omit',
         method: 'POST',
-        body: JSON.stringify({  id, password }),
+        body: JSON.stringify({  accountId, password }),
         headers: { 'Content-Type': 'application/json' }
     })
     .then(response => response.json())
     .then(data => {
-        alert(data)
-        console.log(data);
+        alert(JSON.stringify(data))
     })
     .catch(error => {
         alert(error)
