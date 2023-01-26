@@ -21,12 +21,14 @@ form[0].addEventListener('submit', (evt)=>{
             return
         }
 
-        //로컬 스토리지에 저장
-        localStorage.setItem("userId", response.userId)
-        localStorage.setItem("token", response.token)
-        
+        //쿠키 저장
+        // const now = new Date();
+        // const expirationTime = now.setTime(now.getTime() + (60 * 60 * 24));
+        document.cookie = `userId=${response.userId}; path=/;`
+        document.cookie = `token=${response.token}; path=/;`
+
         //메인페이지로 이동
-        window.location="/"
+        window.location="/memo"
     })
     .catch(error => {
         alert(error)
