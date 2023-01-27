@@ -1,25 +1,55 @@
 var express = require('express');
+var request = require('request')
 var router = express.Router();
 
-/* GET list page. */
 router.get('/', function(req, res, next) {
-  //밑에서 사용하는 데이터들은 모두 DB에서 읽어와야 한다.
+  const cookies = req.cookies
 
-  //왼쪽 리스트에 작성될 메모 타이틀 리스트
-  memoList = [
-    { title: 'Memo1', memoId:1 },
-    { title: 'Memo2', memoId:2 },
-    { title: 'Memo3', memoId:3 },
-    { title: 'Memo4', memoId:4 },
-    { title: 'Memo5', memoId:5 }
-  ]
+  //TODO: 쿠키에 원하는 정보가 있는지 확인하는 절차가 필요하다.
 
-  //todo: 구조체로 빼서 사용
-  memoDetail = {
-    memoId: -1,
-    title: `no memo`,
-    content: `default`
+  const options = {
+    url: 'http://server.chokospace.kro.kr:3901/api/chokomemo/all-memos',
+    method: 'GET',
+    json: true,
+    body:{
+      userId: cookies.userId,
+      token: cookies.token
+    }
   }
+
+  request.get(options, function(err, response, body){
+    if(err){
+      throw err
+    }
+
+    //TODO: 응답에 에러 메세지가 있고, 그 메세지가 Invalid User일때 처리가 필요하다.
+    //      현재 다른 에러는 따로 처리계획이 없다. 이것도 해결이 필요한 문제
+    if(body.error != null){
+      if(body.error.message.includes("Invalid token")){
+        res.send("Invalid token")
+        return
+      }
+    }
+
+    if(body.memoList == null)
+    {
+      res.send("메모가 없다!") //TODO: 없으면 없는대로 페이지 렌더
+      return
+    } else {
+      const memoList = body.memoList
+
+      memoDetail = {
+        memoId: -1,
+        title: `no memo`,
+        content: `default`
+      }
+
+      res.render('Memo', { title:"Memo", showMenu:true, memoList:memoList, memoDetail:memoDetail });
+    }
+  })
+  /*
+
+
 
   //서버에서 받아온 값을 맵으로 정리
   let memoMap = new Map();
@@ -44,6 +74,7 @@ router.get('/', function(req, res, next) {
   }
 
   res.render('Memo', { title:"Memo", showMenu:true, memoList:memoList, memoDetail:memoDetail });
+  */
 });
 
 module.exports = router;
