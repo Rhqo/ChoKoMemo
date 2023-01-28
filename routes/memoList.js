@@ -21,8 +21,6 @@ router.get('/', function(req, res, next) {
 
   //TODO: 쿠키에 원하는 정보가 있는지 확인하는 절차가 필요하다.
 
-  var memoList = null
-
   const getAllMemoOptions = {
     url: 'http://server.chokospace.kro.kr:3901/api/chokomemo/all-memos',
     method: 'GET',
@@ -62,65 +60,45 @@ router.get('/', function(req, res, next) {
       res.send("메모가 없다!") //TODO: 없으면 없는대로 페이지 렌더
       return
     } else {
-      memoList = body.memoList
-
-      //바로 보여줄 메모의 디테일 정보를 가져온다.
-      const getSpecificMemoOptions = {
-        url: 'http://server.chokospace.kro.kr:3901/api/chokomemo/memo',
-        method: 'GET',
-        json: true,
-        body:{
-          userId: cookies.userId,
-          token: cookies.token,
-          memoId: memoList[0].memoId
-        }
+      if(req.query.id != null) {
+        numMemoID = parseInt(req.query.id)
+        responseWithSpecificMemoDetail(req, res, next, body.memoList, numMemoID)
+      } else {
+        res.redirect(`/memo?id=${body.memoList[0].memoId}`)
       }
-    
-      request.get(getSpecificMemoOptions, function(err, response, body) {
-        if(err){
-          throw err
-        }
-        
-        if(body.error != null)
-        {
-          res.render(body.error.message)
-        } else {
-          resBody = JSON.parse(response.request.body)
-          detail = new_memoDetailObj(resBody.memoId, body.title, body.content)
-
-          res.render('Memo', { title:"Memo", showMenu:true, memoList:memoList, memoDetail:detail });
-        }
-      })
     }
   })
-  /*
-
-
-
-  //서버에서 받아온 값을 맵으로 정리
-  let memoMap = new Map();
-  for (idx in memoList) {
-    memo = memoList[idx]
-    newMemo = {
-      title: memo.title,
-      content: `memoID: ${memo.memoId}`
-     }
-     memoMap.set(memo.memoId, newMemo) 
-  }
-
-  //쿼리 데이터가 string이고, 맵 id는 number라서 맵 뒤질려면 int로 컨버팅!
-  numberID = parseInt(req.query.id)
-  //맵에 있는지 확인
- if (memoMap.has(numberID)) {
-    thisMemo = memoMap.get(numberID)
-    
-    memoDetail.memoId = req.query.id
-    memoDetail.title = thisMemo.title
-    memoDetail.content = thisMemo.content
-  }
-
-  res.render('Memo', { title:"Memo", showMenu:true, memoList:memoList, memoDetail:memoDetail });
-  */
 });
+
+function responseWithSpecificMemoDetail(req, res, next, memoList, memoId) {
+  const cookies = req.cookies
+
+  //바로 보여줄 메모의 디테일 정보를 가져온다.
+  const getSpecificMemoOptions = {
+    url: 'http://server.chokospace.kro.kr:3901/api/chokomemo/memo',
+    method: 'GET',
+    json: true,
+    body:{
+      userId: cookies.userId,
+      token: cookies.token,
+      memoId: memoId
+    }
+  }
+
+  request.get(getSpecificMemoOptions, function(err, response, body) {
+    if(err){
+      throw err
+    }
+    
+    if(body.error != null)
+    {
+      res.render(body.error.message)
+    } else {
+      resBody = JSON.parse(response.request.body)
+      detail = new_memoDetailObj(resBody.memoId, body.title, body.content)
+      res.render('Memo', { title:"Memo", showMenu:true, memoList:memoList, memoDetail:detail });
+    }
+  })
+}
 
 module.exports = router;
