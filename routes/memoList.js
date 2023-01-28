@@ -2,6 +2,20 @@ var express = require('express');
 var request = require('request')
 var router = express.Router();
 
+function memoDetailObj(){
+  var memoId
+  var title
+  var content
+}
+
+function new_memoDetailObj(memoId, title, content){
+  var ret = new memoDetailObj()
+  ret.memoId = memoId
+  ret.title = title
+  ret.content = content
+  return ret
+}
+
 router.get('/', function(req, res, next) {
   const cookies = req.cookies
 
@@ -26,7 +40,9 @@ router.get('/', function(req, res, next) {
     //      현재 다른 에러는 따로 처리계획이 없다. 이것도 해결이 필요한 문제
     if(body.error != null){
       if(body.error.message.includes("Invalid token")){
-        res.send("Invalid token")
+        //알람 띄우고 메인페이지로 이동
+        res.write("<script>alert('token expired!')</script>");
+        res.write("<script>window.location=\"/\"</script>");
         return
       }
     }
@@ -38,13 +54,12 @@ router.get('/', function(req, res, next) {
     } else {
       const memoList = body.memoList
 
-      memoDetail = {
-        memoId: -1,
-        title: `no memo`,
-        content: `default`
-      }
+      //js에서는 함수를 객체로 사용한다.
+      //typescript를 사용하면, interface를 통해 조금 더 익숙한 형태의 객체를 볼 수 있다.
+      //typescript쓸까?
+      detail = new_memoDetailObj(-1, "title", "contenct")
 
-      res.render('Memo', { title:"Memo", showMenu:true, memoList:memoList, memoDetail:memoDetail });
+      res.render('Memo', { title:"Memo", showMenu:true, memoList:memoList, memoDetail:detail });
     }
   })
   /*

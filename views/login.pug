@@ -1,13 +1,15 @@
 extends topBar
 
 block content
+    div.center
+        h1 Sign in
     form.login-form
         .text-field
-            input#id(type='text' name='ID' placeholder='ID')
+            input#id(type='text' name='Id' placeholder='ID')
         .text-field
-            input#password(type='password' name='PW' placeholder='PW')
+            input#password(type='password' name='Password' placeholder='Password')
         .submit-btn
-            input(type='submit' name='LOGIN' value="Login")
+            input(type='submit' name='Signin' value="Sign in")
 
 block javascript
     script(src='/javascripts/login.js')
