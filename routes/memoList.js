@@ -21,7 +21,9 @@ router.get('/', function(req, res, next) {
 
   //TODO: 쿠키에 원하는 정보가 있는지 확인하는 절차가 필요하다.
 
-  const options = {
+  var memoList = null
+
+  const getAllMemoOptions = {
     url: 'http://server.chokospace.kro.kr:3901/api/chokomemo/all-memos',
     method: 'GET',
     json: true,
@@ -31,7 +33,7 @@ router.get('/', function(req, res, next) {
     }
   }
 
-  request.get(options, function(err, response, body){
+  request.get(getAllMemoOptions, function(err, response, body){
     if(err){
       throw err
     }
@@ -40,8 +42,16 @@ router.get('/', function(req, res, next) {
     //      현재 다른 에러는 따로 처리계획이 없다. 이것도 해결이 필요한 문제
     if(body.error != null){
       if(body.error.message.includes("Invalid token")){
+        //TODO: 아래와 같은, 특정 에러에 대한 대처로직은 모든 페이지에 공통으로 적용된다.
+        //      이 코드들을 한 곳에 모아서 처리하도록 만들자.
+        
+        //쿠키 제거
+        res.clearCookie("userId")
+        res.clearCookie("token")
+
         //알람 띄우고 메인페이지로 이동
-        res.write("<script>alert('token expired!')</script>");
+        res.write('<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>') //alert 한글 깨짐방지
+        res.write("<script>alert('장시간 활동이 없어 자동으로 로그아웃 되었습니다.')</script>");
         res.write("<script>window.location=\"/\"</script>");
         return
       }
@@ -52,14 +62,35 @@ router.get('/', function(req, res, next) {
       res.send("메모가 없다!") //TODO: 없으면 없는대로 페이지 렌더
       return
     } else {
-      const memoList = body.memoList
+      memoList = body.memoList
 
-      //js에서는 함수를 객체로 사용한다.
-      //typescript를 사용하면, interface를 통해 조금 더 익숙한 형태의 객체를 볼 수 있다.
-      //typescript쓸까?
-      detail = new_memoDetailObj(-1, "title", "contenct")
+      //바로 보여줄 메모의 디테일 정보를 가져온다.
+      const getSpecificMemoOptions = {
+        url: 'http://server.chokospace.kro.kr:3901/api/chokomemo/memo',
+        method: 'GET',
+        json: true,
+        body:{
+          userId: cookies.userId,
+          token: cookies.token,
+          memoId: memoList[0].memoId
+        }
+      }
+    
+      request.get(getSpecificMemoOptions, function(err, response, body) {
+        if(err){
+          throw err
+        }
+        
+        if(body.error != null)
+        {
+          res.render(body.error.message)
+        } else {
+          resBody = JSON.parse(response.request.body)
+          detail = new_memoDetailObj(resBody.memoId, body.title, body.content)
 
-      res.render('Memo', { title:"Memo", showMenu:true, memoList:memoList, memoDetail:detail });
+          res.render('Memo', { title:"Memo", showMenu:true, memoList:memoList, memoDetail:detail });
+        }
+      })
     }
   })
   /*
