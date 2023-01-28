@@ -7,12 +7,17 @@ html
     header
       h1 
         a(href="/") ChoKoMemo
-      if showMemu
-        nav
-          span
-            a(href="/account/signup") Sign up 
-          span
-            a(href="/account/signin") Sign in
+      if showAccountOptions
+        if isSignedIn
+          nav 
+            span 
+              a(href="/account/signout") Sign out
+        else 
+          nav
+            span
+              a(href="/account/signup") Sign up 
+            span
+              a(href="/account/signin") Sign in
     block content
 
     block javascript

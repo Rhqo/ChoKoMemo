@@ -96,7 +96,7 @@ function responseWithSpecificMemoDetail(req, res, next, memoList, memoId) {
     } else {
       resBody = JSON.parse(response.request.body)
       detail = new_memoDetailObj(resBody.memoId, body.title, body.content)
-      res.render('Memo', { title:"Memo", showMenu:true, memoList:memoList, memoDetail:detail });
+      res.render('Memo', { title:"Memo", memoList:memoList, memoDetail:detail, showAccountOptions:true, isSignedIn:true });
     }
   })
 }
