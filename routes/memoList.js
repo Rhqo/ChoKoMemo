@@ -55,16 +55,16 @@ router.get('/', function(req, res, next) {
       }
     }
 
-    if(body.memoList == null)
-    {
-      res.send("메모가 없다!") //TODO: 없으면 없는대로 페이지 렌더
-      return
+    if(req.query.id != null) {
+      numMemoID = parseInt(req.query.id)
+      responseWithSpecificMemoDetail(req, res, next, body.memoList, numMemoID)
     } else {
-      if(req.query.id != null) {
-        numMemoID = parseInt(req.query.id)
-        responseWithSpecificMemoDetail(req, res, next, body.memoList, numMemoID)
-      } else {
+      if(body.memoList != null) {
         res.redirect(`/memo?id=${body.memoList[0].memoId}`)
+      } else {
+        //메모가 하나도 없는 경우
+        detail = new_memoDetailObj(-1, "새로운 메모를 만들어 보세요!", "이곳에 내용을 보여드릴게요.")
+        res.render('Memo', { title:"Memo", memoList:null, memoDetail:detail, showAccountOptions:true, isSignedIn:true });
       }
     }
   })

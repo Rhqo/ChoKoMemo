@@ -3,26 +3,16 @@ extends topBar
 block content
   .content
     .leftsideBar 
-      each memo in memoList
-        if memo.memoId == memoDetail.memoId
-          li.selected
-            a(href="/memo?id="+memo.memoId)= memo.title
-        else 
-          li
-            a(href="/memo?id="+memo.memoId)= memo.title
+      if memoList != null
+        each memo in memoList
+          if memo.memoId == memoDetail.memoId
+            li.selected
+              a(href="/memo?id="+memo.memoId)= memo.title
+          else 
+            li
+              a(href="/memo?id="+memo.memoId)= memo.title
       li
-        a(href="/memo?id="+memoList.push({title: `Memo${memoList.length}`, memoId: `${memoList.length}`})) +New Memo
+        a(href="") +New Memo
     .rightsideBar
-      if memoDetail.memoId == undefined
-        h1= "Hello 'username'"
-      else if memoDetail.memoId == 6
-        form(action='http://localhost/addMemo' method='post')
-          p
-            input(type='text' name='title')
-          p
-            textarea(name='description')
-          p
-            input(type='submit')
-      else
         h1= memoDetail.title 
         p= memoDetail.content
