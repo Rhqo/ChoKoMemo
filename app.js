@@ -9,7 +9,7 @@ var authState = require('./middlewares/authState');
 var indexRouter = require('./routes/index');
 var accountRouter = require('./routes/account')
 var memoListRouter = require('./routes/memoList');
-var requestTestRouter = require('./routes/requestTest');
+var bs = require('./routes/bs'); //부트스트랩 테스트용
 
 var app = express();
 
@@ -30,7 +30,7 @@ app.use(authState);
 app.use('/', indexRouter);
 app.use('/account', accountRouter)
 app.use('/memo', memoListRouter);
-app.use('/req', requestTestRouter);
+app.use('/bs', bs)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,0 +1,96 @@
+doctype html
+html
+    head
+        link(rel='stylesheet' href='/css/bootstrap.min.css')
+
+    body
+        nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+            .container-fluid
+                a.navbar-brand(href='/') ChoKoMemo
+                #navbarSupportedContent.collapse.navbar-collapse
+                    ul.navbar-nav.ms-auto.mb-2.mb-lg-0
+                        li.nav-item
+                            a.nav-link(href='/account/signin') Sign in
+                        li.nav-item
+                            button.btn.btn-outline-light(type='button' onclick="location.href='/account/signup'") Sign up
+
+    .row
+        .col-4
+            nav#navbar-example3.h-100.flex-column.align-items-stretch.pe-4.border-end
+                nav.nav.nav-pills.flex-column
+                    a.nav-link(href='#song1') Item 1
+                    nav.nav.nav-pills.flex-column
+                        a.nav-link.ms-3.my-1(href='#item-1-1') Item 1-1
+                        a.nav-link.ms-3.my-1(href='#item-1-2') Item 1-2
+                    a.nav-link(href='#item-2') Item 2
+                    a.nav-link(href='#item-3') Item 3
+                    nav.nav.nav-pills.flex-column
+                        a.nav-link.ms-3.my-1(href='#item-3-1') Item 3-1
+                        a.nav-link.ms-3.my-1(href='#item-3-2') Item 3-2
+        .col-8
+            .scrollspy-example-2(data-bs-spy='scroll' data-bs-target='#navbar-example3' data-bs-smooth-scroll='true' tabindex='0')
+                #song1
+                    h4 Item 1
+                    p.
+                        현재 애국가의 가락(작곡)은 안익태가 작곡하였고,
+                        <br><br>
+                        이 가락만이 현재 공식적인 가락으로 사용되고 있으며 가사는 대한민국 임시정부 시기에서 거의 그대로 전승되었다.
+                        <br><br>
+                        정확히는 대한민국 임시정부에서는 안익태가 작곡한 현재의 가락에 따른 애국가가 1940년 12월 20일부터 사용되었으며
+                        <br><br>
+                        1941년에 광복군 결성식에서 불려진 것을 계기로
+                        <br><br>
+                        그리고 일제의 탄압으로부터 자유로운 미주 등 해외에서는 한인계 라디오 방송에서 송출되는 등
+                        <br><br>
+                        적극적으로 보급되었으며 이후 공식적으로 국가로 명문화한 시점은 1942년이다.
+                        <br><br>
+                        애국가를 대한민국의 국가로 지정한 전례나 직접 규정한 법률은 없다.
+                        <br><br>
+                        이는 국가보훈처의 유권해석이다.
+                        <br><br>
+                        관련 법령만 없을 뿐이지 역사적으로도 한국을 상징하는 노래로 오랫동안 쓰였고
+                        <br><br>
+                        현재도 공식행사나 스포츠대회 등에서 국가가 필요하면 애국가를 사용한다는 점에서 사실상 국가라고 볼 수 있다.
+                        <br><br>
+                        대한민국국기법 시행령 제4조에서 국기에 대한 맹세를, 제19조에서 국기의 게양식 및 강하식을 애국가의 연주에 맞추어 행한다고 하거나,
+                        <br><br>
+                        국민의례 규정(대통령훈령)에서 국민의례 절차에 애국가 제창/연주를 규정하는 등 간접적으로 이러한 관습을 지지하고 있다.
+                        <br><br>
+                        문화체육관광부에서도 보도자료를 통해서 '국가상징으로서 국가를 규정한 법적 근거는 없으나 관습상 인정된다'고 밝혔다.
+                        <br><br>
+                        당장 대한민국에서 제일 보수적인 집단인 군대에서조차 애국가를 국가로서 인정하고 매 행사마다 부르고 있다.
+                        <br><br>
+                #item-1-1
+                    h5 Item 1-1
+                    p.
+                        동해물과 백두산이 마르고 닳도록
+                        하느님이 보우하사 우리나라만세.
+                        무궁화 삼천리 화려강산
+                        대한사람 대한으로 길이 보전하세
+                #item-1-2
+                    h5 Item 1-2
+                    p.
+                        남산 위에 저 소나무, 철갑을 두른 듯
+                        바람서리 불변함은 우리 기상일세.
+                        무궁화 삼천리 화려강산
+                        대한사람 대한으로 길이 보전하세
+                #item-2
+                    h4 Item 2
+                    p.
+                        가을 하늘 공활한데 높고 구름 없이
+                        밝은 달은 우리 가슴 일편단심일세.
+                        무궁화 삼천리 화려강산
+                        대한사람 대한으로 길이 보전하세
+                #item-3
+                    h4 Item 3
+                    p ...
+                #item-3-1
+                    h5 Item 3-1
+                    p ...
+                #item-3-2
+                    h5 Item 3-2
+                    p ...
+
+
+
+    script(src='/js/bootstrap.min.js')
