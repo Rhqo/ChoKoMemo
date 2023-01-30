@@ -4,7 +4,7 @@ var router = express.Router();
 
 
 router.get('/', function(req, res, next) {
-    res.render('bs')
+    res.render('practice/bs_body')
 });
 
 module.exports = router;
