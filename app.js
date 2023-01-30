@@ -1,5 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
+const ejs = require('ejs');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -13,9 +14,9 @@ var bs = require('./routes/bs'); //부트스트랩 테스트용
 
 var app = express();
 
-// view engine setup
+// view engine setup (ejs)
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
+app.set('view engine', 'ejs');
 
 app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js')); // redirect bootstrap JS
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css')); // redirect CSS bootstrap
