@@ -1,0 +1,34 @@
+<%- include('bs_header') -%>
+
+<div class="col-lg-8 mx-auto p-4 py-md-5">
+    <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
+      <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="24" fill="currentColor" class="bi bi-sticky" viewBox="0 0 16 16"><path d="M2.5 1A1.5 1.5 0 0 0 1 2.5v11A1.5 1.5 0 0 0 2.5 15h6.086a1.5 1.5 0 0 0 1.06-.44l4.915-4.914A1.5 1.5 0 0 0 15 8.586V2.5A1.5 1.5 0 0 0 13.5 1h-11zM2 2.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 .5.5V8H9.5A1.5 1.5 0 0 0 8 9.5V14H2.5a.5.5 0 0 1-.5-.5v-11zm7 11.293V9.5a.5.5 0 0 1 .5-.5h4.293L9 13.793z"/></svg>
+        <span class="fs-4">ChoKoMemo</span>
+      </a>
+    </header>
+    <span style="display: flex; flex-direction: column; height: 60px; width: 400px; font-size: 30px; margin: 0 auto">Sign in</span>
+    <main style="display: flex; flex-direction: column; height: 100%; width: 400px; margin: 0 auto;">
+        <div class="form-floating">
+            <input type="id" class="form-control" id="floatingInput" placeholder="ID">
+            <label for="floatingInput">ID</label>
+        </div>
+        <div style="height: 5px;"></div>
+        <div class="form-floating">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+            <label for="floatingPassword">Password</label>
+        </div>
+        <div style="height: 3px;"></div>
+        <div class="checkbox mb-3">
+            <label>
+            <input type="checkbox" value="remember-me"> Remember me
+            </label>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+    </main>
+    <footer class="col-lg-8 pt-5 my-5 text-muted border-top" style="position: absolute; bottom: 0;">
+        We are ChoKoSpace &middot; 2023<br>
+    </footer>
+</div>
+
+<%- include('bs_footer') -%>
