@@ -1,0 +1,23 @@
+<%- include('header') -%>
+
+<form class="content">
+  <div class="leftsideBar">
+    <% if(memoList != null) { %>
+      <% for(var i = 0; i < memoList.length; i++) { %>
+        <% if(memoList[i].memoId == memoDetail.memoId) { %>
+        <li class="selected"><a href="/memo?id=<%= memoList[i].memoId %>"><%= memoList[i].title %></a></li>
+        <% } else { %>
+          <li><a href="/memo?id=<%= memoList[i].memoId %>"><%= memoList[i].title %></a></li>
+        <% } %>
+      <% } %>
+    <% } %>
+    <li><a href="">+New Memo</a></li>
+  </div>
+  
+  <div class="rightsideBar">
+    <h1 type="rightsideBar h1"><%= memoDetail.title %></h1>
+    <p><%= memoDetail.content %></p>
+  </div>
+</form>
+
+<%- include('footer') -%>
