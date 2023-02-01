@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var url = require('url');
 var authState = require('./middlewares/authState');
+var errorHandle = require('./middlewares/errorHandle');
 
 var indexRouter = require('./routes/index');
 var accountRouter = require('./routes/account')
@@ -27,6 +28,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(authState);
+app.use(errorHandle);
 
 app.use('/', indexRouter);
 app.use('/account', accountRouter)

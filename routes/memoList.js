@@ -42,7 +42,7 @@ router.get('/', function(req, res, next) {
       if(body.error.message.includes("Invalid token")){
         //TODO: 아래와 같은, 특정 에러에 대한 대처로직은 모든 페이지에 공통으로 적용된다.
         //      이 코드들을 한 곳에 모아서 처리하도록 만들자.
-        
+
         //쿠키 제거
         res.clearCookie("userId")
         res.clearCookie("token")
