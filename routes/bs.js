@@ -11,4 +11,8 @@ router.get('/login', function(req, res, next) {
     res.render('practice/bs_login')
 });
 
+router.get('/memo', function(req, res, next) {
+    res.render('practice/bs_memo')
+})
+
 module.exports = router;

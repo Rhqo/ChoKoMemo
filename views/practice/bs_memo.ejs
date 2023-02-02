@@ -1,0 +1,36 @@
+<%- include('bs_header') -%>
+
+<div class="d-flex">
+    <div class="w-auto vh-100">
+        <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 200px;">
+            <a href="/bs/memo" class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
+            <span class="fs-5 fw-semibold">Memo List</span>
+            </a>
+            <div class="list-group list-group-flush border-bottom scrollarea">
+            <a href="#" class="list-group-item list-group-item-action active py-3 lh-sm" aria-current="true">
+                <div class="d-flex w-100 align-items-center justify-content-between">
+                <strong class="mb-1">Memo-Title1</strong>
+                </div>
+                <div class="col-10 mb-1 small">blah-blah1</div>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
+                <div class="d-flex w-100 align-items-center justify-content-between">
+                <strong class="mb-1">Memo-Title2</strong>
+                </div>
+                <div class="col-10 mb-1 small">blah-blah2</div>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
+                <div class="d-flex w-100 align-items-center justify-content-between">
+                <strong class="mb-1">+ New Memo</strong>
+                </div>
+            </a>
+            </div>
+        </div>
+    </div>
+    <div class="w-auto vh-100 mt-2 ms-3">
+        <h1>Memo-Title1</h1>
+        <p>blah-blah1</p>
+    </div>
+</div> 
+
+<%- include('bs_footer') -%>
