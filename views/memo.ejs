@@ -1,23 +1,43 @@
 <%- include('header') -%>
 
-<form class="content">
-  <div class="leftsideBar">
-    <% if(memoList != null) { %>
-      <% for(var i = 0; i < memoList.length; i++) { %>
-        <% if(memoList[i].memoId == memoDetail.memoId) { %>
-        <li class="selected"><a href="/memo?id=<%= memoList[i].memoId %>"><%= memoList[i].title %></a></li>
-        <% } else { %>
-          <li><a href="/memo?id=<%= memoList[i].memoId %>"><%= memoList[i].title %></a></li>
-        <% } %>
-      <% } %>
-    <% } %>
-    <li><a href="">+New Memo</a></li>
+<div class="d-flex">
+    <div class="w-auto vh-100">
+        <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 200px;">
+            <a href="/memo" class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
+            <span class="fs-5 fw-semibold">Memo List</span>
+            </a>
+            <div class="list-group list-group-flush border-bottom scrollarea">
+            <% if(memoList != null) { %>
+                <% for(var i = 0; i < memoList.length; i++) { %>
+                    <% if(memoList[i].memoId == memoDetail.memoId) { %>
+                      <a href="/memo?id=<%= memoList[i].memoId %>" class="list-group-item list-group-item-action active py-3 lh-sm" aria-current="true">
+                        <div class="d-flex w-100 align-items-center justify-content-between">
+                          <strong class="mb-1"><%= memoList[i].title %></strong>
+                          </div>
+                          <div class="col-10 mb-1 small">blah-blah1</div>
+                      </a>
+                    <% } else { %>
+                      <a href="/memo?id=<%= memoList[i].memoId %>" class="list-group-item list-group-item-action py-3 lh-sm">
+                        <div class="d-flex w-100 align-items-center justify-content-between">
+                          <strong class="mb-1"><%= memoList[i].title %></strong>
+                          </div>
+                          <div class="col-10 mb-1 small">blah-blah2</div>
+                      </a>
+                  <% } %>
+                <% } %>
+            <% } %>
+            <a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
+              <div class="d-flex w-100 align-items-center justify-content-between">
+              <strong class="mb-1">+ New Memo</strong>
+              </div>
+            </a>
+            </div>
+        </div>
+    </div>
+    <div class="w-auto vh-100 mt-2 ms-3">
+      <h1><%= memoDetail.title %></h1>
+      <p><%= memoDetail.content %></p>
   </div>
-  
-  <div class="rightsideBar">
-    <h1 type="rightsideBar h1"><%= memoDetail.title %></h1>
-    <p><%= memoDetail.content %></p>
-  </div>
-</form>
+</div> 
 
 <%- include('footer') -%>

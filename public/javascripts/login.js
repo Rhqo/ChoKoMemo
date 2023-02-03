@@ -1,7 +1,7 @@
 form = document.getElementsByClassName('login-form')
 form[0].addEventListener('submit', (evt)=>{
-    const accountId = document.getElementById('id').value;
-    const password = document.getElementById('password').value;
+    const accountId = document.getElementById('floatingInput').value;
+    const password = document.getElementById('floatingPassword').value;
 
     
     fetch('http://server.chokospace.kro.kr:3901/api/chokomemo/signin', {

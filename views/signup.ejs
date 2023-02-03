@@ -1,19 +1,28 @@
 <%- include('header') -%>
 
-<div class="center">
-    <h1>Sign up</h1>
+<div class="col-lg-8 mx-auto mt-4 p-4 py-md-5">
+    <span style="display: flex; flex-direction: column; height: 60px; width: 400px; font-size: 30px; margin: 0 auto">Sign up</span>
+    <main style="display: flex; flex-direction: column; height: 100%; width: 400px; margin: 0 auto;">
+        <form class="login-form">
+            <div class="form-floating">
+                <input type="id" class="form-control" id="floatingInput" placeholder="ID">
+                <label for="floatingInput">ID</label>
+            </div>
+            <div style="height: 5px;"></div>
+            <div class="form-floating">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                <label for="floatingPassword">Password</label>
+            </div>
+            <div style="height: 5px;"></div>
+            <div class="form-floating">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                <label for="floatingPassword">Check Password</label>
+            </div>
+            <div style="height: 5px;"></div>
+            <input type="submit" value="Create account" name="Signup" class="w-100 btn btn-lg btn-primary mb-lg-5"></button>
+        </form>
+        <script></script>
+    </main>
 </div>
-<form class="login-form">
-    <div class="text-field">
-        <input id="id" type=text name="Id" placeholder="ID">
-    </div>
-    <div class="text-field">
-        <input id="password" type=password name="password" placeholder="Password">
-    </div>
-    <div class="submit-btn">
-        <input type=submit value="create account" name="signup">
-    </div>
-</form>
 
 <%- include('footer') -%>
-
