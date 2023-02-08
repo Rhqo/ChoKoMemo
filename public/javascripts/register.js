@@ -3,7 +3,7 @@ form[0].addEventListener('submit', (evt)=>{
     const accountId = document.getElementById('floatingInput').value;
     const password = document.getElementById('floatingPassword1').value;
     
-    fetch('', {
+    fetch('http://server.chokospace.kro.kr:3901/api/chokomemo/signup', {
         credentials: 'omit',
         method: 'POST',
         body: JSON.stringify({ accountId, password }),
@@ -11,11 +11,10 @@ form[0].addEventListener('submit', (evt)=>{
     })
     .then(response => response.json())
     .then(data => {
-        response = JSON.parse(JSON.stringify(data))
+        console.log(data);
+        response = data
         if (err = response.error){
-            if(err.message == "Invalid ID"){
-                alert("이미 존재하는 아이디입니다")
-            }
+            alert("이미 존재하는 아이디입니다")
             return
         }
         else {
