@@ -3,25 +3,43 @@
 <div class="col-lg-8 mx-auto mt-4 p-4 py-md-5">
     <span style="display: flex; flex-direction: column; height: 60px; width: 400px; font-size: 30px; margin: 0 auto">Sign up</span>
     <main style="display: flex; flex-direction: column; height: 100%; width: 400px; margin: 0 auto;">
-        <form class="login-form">
+        <form class="register-form">
             <div class="form-floating">
                 <input type="id" class="form-control" id="floatingInput" placeholder="ID">
                 <label for="floatingInput">ID</label>
             </div>
             <div style="height: 5px;"></div>
             <div class="form-floating">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                <input type="password" class="form-control" id="floatingPassword1" placeholder="Password">
                 <label for="floatingPassword">Password</label>
             </div>
             <div style="height: 5px;"></div>
             <div class="form-floating">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                <label for="floatingPassword">Check Password</label>
+                <input type="password" class="form-control" id="floatingPassword2" placeholder="Password">
+                <label for="floatingPassword">Verify Password</label>
             </div>
             <div style="height: 5px;"></div>
-            <input type="submit" value="Create account" name="Signup" class="w-100 btn btn-lg btn-primary mb-lg-5"></button>
+            <input type="submit" id="submit" value="Disabled" name="Signup" class="w-100 disabled btn btn-lg btn-primary mb-lg-5"></button>
+            <script>
+                document.getElementById("floatingPassword2").addEventListener("input", function() {
+                var id = document.getElementById("floatingInput");
+                var btn = document.getElementById("submit");
+                if (document.getElementById("floatingPassword1").value === this.value) {
+                    this.style.color = "green";
+                    this.className = "form-control is-valid";
+                    btn.classList.remove("disabled");
+                    btn.value= "Create account!"
+                } 
+                else {
+                    this.style.color = "red";
+                    this.className = "form-control is-invalid";
+                    btn.classList.add("disabled");
+                    btn.value="Disabled";
+                    }
+                });
+            </script>
         </form>
-        <script></script>
+        <script src="/javascripts/register.js"></script>
     </main>
 </div>
 
