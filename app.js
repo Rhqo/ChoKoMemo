@@ -11,7 +11,6 @@ var authState = require('./middlewares/authState');
 var indexRouter = require('./routes/index');
 var accountRouter = require('./routes/account')
 var memoListRouter = require('./routes/memoList');
-var bs = require('./routes/bs'); //부트스트랩 테스트용
 
 var app = express();
 
@@ -33,7 +32,8 @@ app.use(authState);
 app.use('/', indexRouter);
 app.use('/account', accountRouter)
 app.use('/memo', memoListRouter);
-app.use('/bs', bs)
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -46,10 +46,12 @@ app.use(function(err, req, res, next) {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
+  
   // render the error page
   res.status(err.status || 500);
   console.log(err);
   res.render('error');
+  
 });
 
 module.exports = app;
