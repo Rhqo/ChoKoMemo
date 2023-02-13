@@ -1,5 +1,5 @@
-form = document.getElementsByClassName('memo-form')
-form[0].addEventListener('submit', (evt)=>{
+create = document.getElementsByClassName('memo-form')
+create[0].addEventListener('submit', (evt)=>{
     const title = document.getElementById('title').value;
     const content = document.getElementById('content').value;
 
@@ -22,7 +22,6 @@ form[0].addEventListener('submit', (evt)=>{
     .then(response => response.json())
     .then(data => {
         response = JSON.stringify(data);
-        alert(response);
         if (err = response.error){
             alert("error")
             return
