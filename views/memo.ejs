@@ -26,18 +26,18 @@
                   <% } %>
                 <% } %>
             <% } %>
-            <a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
+            <a href="/createMemo" id="createMemo" class="list-group-item list-group-item-action py-3 lh-sm" aria-current="true">
               <div class="d-flex w-100 align-items-center justify-content-between">
-              <strong class="mb-1">+ New Memo</strong>
+                <strong class="mb-1">+ New Memo</strong>
               </div>
             </a>
             </div>
         </div>
     </div>
     <div class="w-auto vh-100 mt-2 ms-3">
-      <h1><%= memoDetail.title %></h1>
-      <p><%= memoDetail.content %></p>
-  </div>
+      <h1 id="title"><%= memoDetail.title %></h1>
+      <p id="script"><%= memoDetail.content %></p>
+    </div>
 </div> 
 
 <%- include('footer') -%>

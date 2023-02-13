@@ -9,8 +9,9 @@ var authState = require('./middlewares/authState');
 var errorhandler = require('./middlewares/errorHandler');
 
 var indexRouter = require('./routes/index');
-var accountRouter = require('./routes/account')
+var accountRouter = require('./routes/account');
 var memoListRouter = require('./routes/memoList');
+var createMemoRouter = require('./routes/createMemo');
 
 var app = express();
 
@@ -32,6 +33,7 @@ app.use(authState);
 app.use('/', indexRouter);
 app.use('/account', accountRouter)
 app.use('/memo', memoListRouter);
+app.use('/createMemo', createMemoRouter)
 
 
 

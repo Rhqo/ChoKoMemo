@@ -1,0 +1,11 @@
+<%- include('header') -%>
+
+<form class="memo-form" style="display: flex; flex-direction: column; height: 100%; width: 75%; margin-left: 10px; margin-block: 10px;">
+    <input type="text" class="h1" id="title" placeholder="New Memo" >
+    <textarea class="p1 text-wrap min-vh-100" id="content" placeholder="This is New Memo"></textarea>
+    <input type="submit" id="submit" value="Submit" class="btn btn-lg btn-primary mb-lg-5" style="margin-top: 10px">
+</form>
+
+<script src="/javascripts/memo.js"></script>
+
+<%- include('footer') -%>
