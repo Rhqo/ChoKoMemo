@@ -11,12 +11,11 @@ document.getElementById('deleteBtn').addEventListener('click', (evt)=>{
     const memoIds = document.getElementById('memoIds').value;
     
     const string = `{"userId": "${userId}","token": "${token}","memoIds": ${memoIds}}`;
-    const jsonObject = JSON.parse(string);
 
     fetch('http://server.chokospace.kro.kr:3901/api/chokomemo/memo', {
         credentials: 'omit',
         method: 'Delete',
-        body: JSON.stringify(jsonObject),
+        body: string,
         headers: { 'Content-Type': 'application/json' }
     })
     .then(response => response.json())
