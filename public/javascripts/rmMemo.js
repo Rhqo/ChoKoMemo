@@ -12,7 +12,6 @@ document.getElementById('deleteBtn').addEventListener('click', (evt)=>{
     
     const string = `{"userId": "${userId}","token": "${token}","memoIds": ${memoIds}}`;
     const jsonObject = JSON.parse(string);
-    alert(JSON.stringify(jsonObject));
 
     fetch('http://server.chokospace.kro.kr:3901/api/chokomemo/memo', {
         credentials: 'omit',
