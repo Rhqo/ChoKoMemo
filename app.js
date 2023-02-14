@@ -12,6 +12,7 @@ var indexRouter = require('./routes/index');
 var accountRouter = require('./routes/account');
 var memoListRouter = require('./routes/memoList');
 var createMemoRouter = require('./routes/createMemo');
+var updateMemoRouter = require('./routes/updateMemo');
 
 var app = express();
 
@@ -34,6 +35,7 @@ app.use('/', indexRouter);
 app.use('/account', accountRouter)
 app.use('/memo', memoListRouter);
 app.use('/createMemo', createMemoRouter)
+app.use('/updateMemo', updateMemoRouter)
 
 
 
