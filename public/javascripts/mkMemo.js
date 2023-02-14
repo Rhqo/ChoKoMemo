@@ -27,7 +27,7 @@ create[0].addEventListener('submit', (evt)=>{
             return
         }
         else {
-            alert("success")
+            alert(response)
         }
 
         window.location="/memo"
