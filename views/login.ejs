@@ -3,14 +3,14 @@
 <div class="col-lg-8 mx-auto mt-4 p-4 py-md-5">
     <span style="display: flex; flex-direction: column; height: 60px; width: 400px; font-size: 30px; margin: 0 auto">Sign in</span>
     <main style="display: flex; flex-direction: column; height: 100%; width: 400px; margin: 0 auto;">
-        <form class="login-form">
+        <form class="login-form" action="/account/signin" method="post">
             <div class="form-floating">
-                <input type="id" class="form-control" id="floatingInput" placeholder="ID">
+                <input type="id" class="form-control" id="floatingInput" name="floatingInput" placeholder="ID">
                 <label for="floatingInput">ID</label>
             </div>
             <div style="height: 5px;"></div>
             <div class="form-floating">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                <input type="password" class="form-control" id="floatingPassword" name="floatingPassword" placeholder="Password">
                 <label for="floatingPassword">Password</label>
             </div>
             <div style="height: 3px;"></div>
@@ -21,7 +21,6 @@
             </div>
             <input type="submit" value="Sign in" name="Signin" class="w-100 btn btn-lg btn-primary mb-lg-5"></button>
         </form>
-        <script src="/javascripts/login.js"></script>
     </main>
 </div>
 
