@@ -16,6 +16,12 @@ function new_memoDetailObj(memoId, title, content){
   return ret
 }
 
+function alert(string, path, res) {
+  res.write('<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>')
+  res.write(`<script>alert("${string}")</script>`);
+  res.write(`<script>window.location=\"${path}\"</script>`);
+}
+
 router.get('/', function(req, res, next) {
   const cookies = req.cookies
 
@@ -100,5 +106,35 @@ function responseWithSpecificMemoDetail(req, res, next, memoList, memoId) {
     }
   })
 }
+
+router.post('/', function(req, res, next) {
+  const cookies = req.cookies;
+  const userId = cookies.userId;
+  const token = cookies.token;
+  const memoIds = parseInt(req.query.id);
+  
+  const string = `{"userId": "${userId}","token": "${token}","memoIds": [${memoIds}]}`;
+
+  fetch('http://server.chokospace.kro.kr:3901/api/chokomemo/memo', {
+      credentials: 'omit',
+      method: 'Delete',
+      body: string,
+      headers: { 'Content-Type': 'application/json' }
+  })
+  .then(response => response.json())
+  .then(data => {
+      response = JSON.stringify(data);
+      if (err = response.error){
+          alert("메모 삭제에 실패했습니다.", "/memo", res);
+          return
+      }
+      else {
+          alert("메모 삭제에 성공했습니다.", "/memo", res);
+      }
+  })
+  .catch(error => {
+      console.error(error);
+  });
+});
 
 module.exports = router;

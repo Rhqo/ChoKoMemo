@@ -44,14 +44,9 @@
           window.location = "/updateMemo?id=<%= memoDetail.memoId %>"
         })
       </script>
-      <form>
-          <input type="hidden" id="memoId" value="<%= memoDetail.memoId %>">
-          <% array_of_memoId = []; %>
-          <% array_of_memoId.push(memoDetail.memoId)%>
-        <input type="hidden" id="memoIds" value="<%= JSON.stringify(array_of_memoId) %>">
+      <form action="/memo?id=<%=memoDetail.memoId%>" method="post">
         <input type="submit" id="deleteBtn" value="Delete" class="btn btn-lg btn-primary mb-lg-1">
       </form>
-      <script src="/javascripts/rmMemo.js"></script>
       <% } %>
     </div>
 </div> 
