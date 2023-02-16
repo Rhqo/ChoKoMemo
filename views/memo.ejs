@@ -38,10 +38,12 @@
       <h1 id="title"><%= memoDetail.title %></h1>
       <p id="script" style="min-height: 30vh;"><%= memoDetail.content %></p>
       <% if (memoList != null) { %>
-      <form action="/updateMemo?id=<%= memoDetail.memoId %>" method="get">
+      <form action="/updateMemo" method="get">
+        <input type="text" name="id" value=<%= memoDetail.memoId %> hidden="true">
         <input type="submit" id="updateBtn" value="Update" class="btn btn-lg btn-primary mb-lg-1">
       </form>
-      <form action="/memo?id=<%=memoDetail.memoId%>" method="post">
+      <form action="/memo" method="post">
+        <input type="text" name="id" value=<%= memoDetail.memoId %> hidden="true">
         <input type="submit" id="deleteBtn" value="Delete" class="btn btn-lg btn-primary mb-lg-1">
       </form>
       <% } %>

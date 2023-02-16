@@ -111,14 +111,13 @@ router.post('/', function(req, res, next) {
   const cookies = req.cookies;
   const userId = cookies.userId;
   const token = cookies.token;
-  const memoIds = parseInt(req.query.id);
-  
-  const string = `{"userId": "${userId}","token": "${token}","memoIds": [${memoIds}]}`;
+  const memoIds = parseInt(req.body.id);
+  const requestBody = `{"userId": "${userId}","token": "${token}","memoIds": [${memoIds}]}`;
 
   fetch('http://server.chokospace.kro.kr:3901/api/chokomemo/memo', {
       credentials: 'omit',
       method: 'Delete',
-      body: string,
+      body: requestBody,
       headers: { 'Content-Type': 'application/json' }
   })
   .then(response => response.json())
