@@ -5,6 +5,7 @@
     <textarea class="p1 text-wrap min-vh-100" id="content" name="content" placeholder="This is New Memo"></textarea>
     <input type="submit" id="submit" value="Fix the Title" class="btn disabled btn-lg btn-primary mb-lg-5" style="margin-top: 10px">
     <script>
+        //제목을 안쓰면 버튼 비활성화
         document.getElementById("title").addEventListener("input", function() {
         var btn = document.getElementById("submit");
         if (this.value != "") {

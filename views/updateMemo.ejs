@@ -2,8 +2,26 @@
 
 <form class="memo-form" action='/updateMemo?id=<%=memoDetail.memoId%>' method="post" style="display: flex; flex-direction: column; height: 100%; width: 75%; margin-left: 10px; margin-block: 10px;">
     <input type="text" class="h1" id="title" name="title" value="<%=memoDetail.title%>">
-    <textarea class="p1 text-wrap min-vh-100" id="content" name="content"><%=memoDetail.content%></textarea>
+    <textarea class="p1 text-wrap min-vh-1001" id="content" name="content"><%=memoDetail.content%></textarea>
     <input type="submit" id="submit" value="Submit" class="btn btn-lg btn-primary mb-lg-5" style="margin-top: 10px">
+
 </form>
+<script>
+    //3분동안 입력 없을 시 
+    var writingTime = new Date();
+    document.getElementById('content').addEventListener('input', (evt)=>{
+        writingTime = new Date();
+    });
+    function checkAFK() {
+        const currentTime = new Date();
+        const afkTime = currentTime - writingTime;
+        const allowedTimes = 60000 * 3; //3min
+        if(afkTime > allowedTimes){
+            document.cookie = `isAutoSaved=1; path'/';`
+            document.getElementById('submit').click();
+        }
+    }
+    setInterval(checkAFK, 60000); //1분마다 확인
+</script>
 
 <%- include('footer') -%>

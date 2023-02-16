@@ -77,8 +77,12 @@ router.post('/', function(req, res, next) {
           alert("메모 저장에 실패했습니다.", `/updateMemo?id=${memoId}`, res);
           return
       }
+      else if (cookies.isAutoSaved) {
+        res.clearCookie('isAutoSaved', { path: '/'});
+        res.redirect(`/updateMemo?id=${memoId}`);
+      }
       else {
-          alert("성공적으로 저장되었습니다.", "/memo", res);
+          alert("성공적으로 저장되었습니다.", `/memo`, res);
       }
   })
   .catch(error => {
