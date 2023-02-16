@@ -56,7 +56,7 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res, next) {
   const title = req.body.title;
   const content = req.body.content;
-  const memoId = parseInt(req.query.id);
+  const memoId = parseInt(req.body.id);
 
   const cookies = req.cookies;
   const userId = cookies.userId;
@@ -83,6 +83,40 @@ router.post('/', function(req, res, next) {
       }
       else {
           alert("성공적으로 저장되었습니다.", `/memo`, res);
+      }
+  })
+  .catch(error => {
+      console.error(error);
+  });
+});
+
+router.post('/autosave', function(req, res, next) {
+  const title = req.body.title;
+  const content = req.body.content;
+  const memoId = parseInt(req.body.id);
+
+  const cookies = req.cookies;
+  const userId = cookies.userId;
+  const token = cookies.token;
+  
+  const string = `{"userId": "${userId}","token": "${token}","memoId": ${memoId},"title": "${title}","content": "${content}"}`;
+  console.log("[AutoSave]" + string);
+  
+  fetch('http://server.chokospace.kro.kr:3901/api/chokomemo/memo', {
+      credentials: 'omit',
+      method: 'PUT',
+      body: string,
+      headers: { 'Content-Type': 'application/json' }
+  })
+  .then(response => response.json())
+  .then(data => {
+      response = JSON.stringify(data);
+      if (err = response.error){
+          console.log("메모 저장에 실패했습니다.");
+          return
+      }
+      else {
+          console.log("자동저장 완료");
       }
   })
   .catch(error => {
