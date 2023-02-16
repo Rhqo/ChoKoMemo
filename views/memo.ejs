@@ -38,12 +38,9 @@
       <h1 id="title"><%= memoDetail.title %></h1>
       <p id="script" style="min-height: 30vh;"><%= memoDetail.content %></p>
       <% if (memoList != null) { %>
-      <input type="submit" id="updateBtn" value="Update" class="btn btn-lg btn-primary mb-lg-1">
-      <script>
-        document.getElementById('updateBtn').addEventListener('click', (evt) => {
-          window.location = "/updateMemo?id=<%= memoDetail.memoId %>"
-        })
-      </script>
+      <form action="/updateMemo?id=<%= memoDetail.memoId %>" method="get">
+        <input type="submit" id="updateBtn" value="Update" class="btn btn-lg btn-primary mb-lg-1">
+      </form>
       <form action="/memo?id=<%=memoDetail.memoId%>" method="post">
         <input type="submit" id="deleteBtn" value="Delete" class="btn btn-lg btn-primary mb-lg-1">
       </form>
